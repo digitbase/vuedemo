@@ -1,7 +1,6 @@
 <template>
-  <van-button type="primary">主要按猜情寻</van-button>
+  <van-button type="primary">主要button</van-button>
 </template>
-fffffffffffffffff
 <script>
 export default {
   name: "HelloWorld",
