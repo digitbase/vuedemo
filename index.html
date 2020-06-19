@@ -2,29 +2,36 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>vuedemo</title>
-    <style>
-        .test {
-            width: 320px;
-            height: 160px;
-            background-color: bisque;
-            text-align: center;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+  <title>vuedemo</title>
+  <style>
+    .test {
+      width: 20rem;
+      height: 10rem;
+      background-color: bisque;
+      text-align: center;
+    }
 
-        .hello {
-            color: rebeccapurple;
-        }
-    </style>
+    .hello {
+      color: rebeccapurple;
+    }
+
+  </style>
 </head>
 
 <body>
-    <div id="app"></div>
-    <div class='test'>
-        <p class='hello'>hello JSpang</p>
-    </div>
+  <div id="app"></div>
 
+  <script>
+    let htmlwidth = document.documentElement.clientWidth;
+    console.log(htmlwidth);
+
+    if (htmlwidth > 750) {
+      document.documentElement.clientWidth = 750;
+    }
+
+  </script>
 </body>
 
 </html>

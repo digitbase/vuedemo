@@ -1,3 +1,4 @@
+
 <template>
   <van-button type="primary">主要button</van-button>
 </template>
