@@ -25,6 +25,7 @@
 
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -45,6 +46,18 @@ export default {
         }
       ]
     };
+  },
+  created() {
+    axios({
+      url: "/api/api01.php",
+      method: "get"
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 </script>
