@@ -20,6 +20,12 @@
         </van-swipe-item>
       </van-swipe>
     </div>
+    <div class="type-bar">
+      <div v-for="(cate,index) in category" :key="index">
+        <img v-lazy="cate.image" />
+        <span>{{cate.mallCategoryName}}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -44,16 +50,22 @@ export default {
           imageUrl:
             "https://images.baixingliangfan.cn/advertesPicture/20200612/20200612170514_5025.jpg"
         }
-      ]
+      ],
+      category: []
     };
   },
   created() {
     axios({
       url: "/api/api01.php",
       method: "get"
+      //responseType: "json"
     })
       .then(response => {
-        console.log(response);
+        if (response.status == 200) {
+          let data = eval("(" + response.data + ")");
+          this.category = data.data.category;
+          console.log(this.category);
+        }
       })
       .catch(error => {
         console.log(error);
@@ -84,5 +96,21 @@ export default {
   clear: both;
   max-height: 10rem;
   overflow: hidden;
+}
+.type-bar {
+  background: #e5017d;
+  float: left;
+  border-radius: 0.3rem;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.type-bar div {
+  width: 3rem;
+  padding: 0.3rem;
+}
+.type-bar img {
+  width: 99%;
 }
 </style>
