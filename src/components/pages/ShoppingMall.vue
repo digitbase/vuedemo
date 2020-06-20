@@ -21,17 +21,34 @@
       </van-swipe>
     </div>
     <div class="type-bar">
-      <div v-for="(cate,index) in category" :key="index">
+      <div v-for="(cate, index) in category" :key="index">
         <img v-lazy="cate.image" />
-        <span>{{cate.mallCategoryName}}</span>
+        <span>{{ cate.mallCategoryName }}</span>
+      </div>
+    </div>
+
+    <div class="recommend-area">
+      <div class="recommend-title">
+        商品推荐
+      </div>
+      <div class="recommend-body">
+        <div v-for="(item, index) in recommendGoods" :key="index">
+          <!-- <swiper-slide class="recommend-item">
+            <img :src="item.image" width="80%" />
+            <div>{{ item.goodsName }}</div>
+            <div></div>
+          </swiper-slide> -->
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-
 <script>
 import axios from "axios";
+import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+import "swiper/css/swiper.css";
+
 export default {
   data() {
     return {
@@ -51,8 +68,25 @@ export default {
             "https://images.baixingliangfan.cn/advertesPicture/20200612/20200612170514_5025.jpg"
         }
       ],
-      category: []
+      category: [],
+      recommendGoods: []
     };
+  },
+  components: { Swiper, SwiperSlide },
+  directives: {
+    swiper: directive
+  },
+  swiperOption: {
+    spaceBetween: 30,
+    effect: "fade",
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    }
   },
   created() {
     axios({
@@ -64,7 +98,8 @@ export default {
         if (response.status == 200) {
           let data = eval("(" + response.data + ")");
           this.category = data.data.category;
-          console.log(this.category);
+          this.recommendGoods = data.data.recommend;
+          console.log(this.recommendGoods);
         }
       })
       .catch(error => {
@@ -112,5 +147,13 @@ export default {
 }
 .type-bar img {
   width: 99%;
+}
+.recommend-area {
+  background-color: #fff;
+  margin-top: 3rem;
+}
+.recommend-title {
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
 }
 </style>

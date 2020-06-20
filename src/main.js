@@ -7,26 +7,30 @@ import router from "./router";
 // import "vant/lib/index.css";
 // Vue.use(Vant);
 
+// import VueAwesomeSwiper from "vue-awesome-swiper"
+// import 'swiper/css/swiper.css'
+
+
 import {
-  Button,
-  Row,
-  Col,
-  Swipe,
-  SwipeItem,
-  Lazyload
+    Button,
+    Row,
+    Col,
+    Swipe,
+    SwipeItem,
+    Lazyload
 } from "vant";
 Vue.use(Button)
-  .use(Row).use(Swipe).use(SwipeItem).use(Col).use(Lazyload);
+    .use(Row).use(Swipe).use(SwipeItem).use(Col).use(Lazyload);
 
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
-  el: "#app",
-  router,
-  components: {
-    App
-  },
-  template: "<App/>",
+    el: "#app",
+    router,
+    components: {
+        App
+    },
+    template: "<App/>",
 
 });
